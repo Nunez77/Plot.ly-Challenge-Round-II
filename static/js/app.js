@@ -118,5 +118,5 @@ function init() {
       getDemoInfo(data.names[0]);
   });
 }
-
+// Initialize the dashboard
 init();
