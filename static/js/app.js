@@ -9,7 +9,7 @@ function grabData(sample) {
     // Use d3 to select the PANEL with id of `#sample-metadata`
     var PANEL = d3.select("#sample-metadata");
 
-    // Use `.html("") to clear any existing metadata
+    // Clear any existing metadata
     PANEL.html("");
 
     // Use Object.entries to add each key and value pair to the panel
