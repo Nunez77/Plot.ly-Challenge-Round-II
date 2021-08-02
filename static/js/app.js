@@ -1,16 +1,18 @@
-function buildMetadata(sample) {
+function grabData(sample) {
+  // Grab the data for the selected sample
+  // Sends http request to the specified url to load .json file or data and executes callback function with parsed json data objects
   d3.json("samples.json").then((data) => {
     var metadata = data.metadata;
-    // Filter the data for the object with the desired sample number
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result = resultArray[0];
-    // Use d3 to select the panel with id of `#sample-metadata`
+    // Filter the data for selected sample number
+    var dataArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = dataArray[0];
+    // Use d3 to select the PANEL with id of `#sample-metadata`
     var PANEL = d3.select("#sample-metadata");
 
     // Use `.html("") to clear any existing metadata
     PANEL.html("");
 
-    // Use `Object.entries` to add each key and value pair to the panel
+    // Use Object.entries to add each key and value pair to the panel
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     Object.entries(result).forEach(([key, value]) => {
@@ -25,8 +27,8 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
     var samples = data.samples;
-    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
-    var result = resultArray[0];
+    var dataArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var result = dataArray[0];
 
     var otu_ids = result.otu_ids;
     var otu_labels = result.otu_labels;
@@ -94,14 +96,14 @@ function init() {
     // Use the first sample from the list to build the initial plots
     var firstSample = sampleNames[0];
     buildCharts(firstSample);
-    buildMetadata(firstSample);
+    grabData(firstSample);
   });
 }
 
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
-  buildMetadata(newSample);
+  grabData(newSample);
 }
 
 // Initialize the dashboard
