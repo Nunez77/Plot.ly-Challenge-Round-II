@@ -1,4 +1,4 @@
-function buildGauge(wfreq) {
+function drawGauge(wfreq) {
   // Enter the washing frequency between 0 and 180
   var level = parseFloat(wfreq) * 20;
 
@@ -25,7 +25,7 @@ function buildGauge(wfreq) {
             { range: [8, 9], color: "rgba(0, 128, 128, .8)" },
           ],
         threshold: {
-          line: { color: "purple", width: 7 },
+          line: { color: "blue", width: 7 },
           thickness: .75,
           value: wfreq
         }

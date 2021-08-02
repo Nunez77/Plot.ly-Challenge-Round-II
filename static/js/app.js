@@ -9,7 +9,7 @@ function grabData(sample) {
     // Use d3 to select the PANEL
     var PANEL = d3.select("#sample-metadata");
 
-    // Clear any existing metadata
+    // Clear existing metadata
     PANEL.html("");
 
     // Add keys and values to the panel
@@ -19,7 +19,7 @@ function grabData(sample) {
     });
 
     // EXTRA BONUS: Build the Gauge Chart
-    drawGaugeCh(result.wfreq);
+    drawGauge(result.wfreq);
   });
 }
 
@@ -33,12 +33,12 @@ function drawCharts(sample) {
     var otu_labels = result.otu_labels;
     var sample_values = result.sample_values;
 
-    // Build a Bubble Chart
+    // Draw Bubble Chart
     var bubbleLayout = {
-      title: "Bacteria Cultures Per Sample",
+      title: "Bacteria Cultures of Selected sample",
       margin: { t: 0 },
       hovermode: "closest",
-      xaxis: { title: "OTU ID" },
+      xaxis: { title: "Unit ID" },
       margin: { t: 30}
     };
     var bubbleData = [
@@ -69,7 +69,7 @@ function drawCharts(sample) {
     ];
 
     var barLayout = {
-      title: "Top 10 Bacteria Cultures Found",
+      title: "Top 10 Bacteria Cultures in Sample",
       margin: { t: 30, l: 150 }
     };
 
