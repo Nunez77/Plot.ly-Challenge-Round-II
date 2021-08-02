@@ -81,7 +81,7 @@ function init() {
   // Grab a reference to the dropdown select element
   var selector = d3.select("#selDataset");
 
-  // Use the list of sample names to populate the select options
+  // Create the sample names list
   d3.json("samples.json").then((data) => {
     var sampleNames = data.names;
 
@@ -92,7 +92,7 @@ function init() {
         .property("value", sample);
     });
 
-    // Use the first sample from the list to build the initial plots
+    // Default sample
     var firstSample = sampleNames[0];
     drawCharts(firstSample);
     grabData(firstSample);
