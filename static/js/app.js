@@ -18,12 +18,12 @@ function grabData(sample) {
       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
 
-    // BONUS: Build the Gauge Chart
-    buildGauge(result.wfreq);
+    // EXTRA BONUS: Build the Gauge Chart
+    drawGaugeCh(result.wfreq);
   });
 }
 
-function buildCharts(sample) {
+function drawCharts(sample) {
   d3.json("samples.json").then((data) => {
     var samples = data.samples;
     var dataArray = samples.filter(sampleObj => sampleObj.id == sample);
@@ -94,16 +94,16 @@ function init() {
 
     // Use the first sample from the list to build the initial plots
     var firstSample = sampleNames[0];
-    buildCharts(firstSample);
+    drawCharts(firstSample);
     grabData(firstSample);
   });
 }
 
-function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  buildCharts(newSample);
-  grabData(newSample);
+function optionChanged(nextSample) {
+  // Fetch the new data for the selected sample
+  drawCharts(nextSample);
+  grabData(nextSample);
 }
 
-// Initialize the dashboard
+// Initialize
 init();
