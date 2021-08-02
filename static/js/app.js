@@ -6,7 +6,7 @@ function grabData(sample) {
     // Filter the data for selected sample number
     var dataArray = metadata.filter(sampleObj => sampleObj.id == sample);
     var result = dataArray[0];
-    // Use d3 to select the PANEL with id of `#sample-metadata`
+    // Use d3 to select the PANEL
     var PANEL = d3.select("#sample-metadata");
 
     // Clear any existing metadata
